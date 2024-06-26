@@ -1,43 +1,34 @@
-def encrypt(input_string, key):
-    """
-    Encrypts the input string using the Vigenère cipher.
-   
-    """
-    encrypted = ""
-    key_length = len(key)
-    for i, char in enumerate(input_string):
+# Define the encrypt and decrypt functions
+def encrypt(text, key):
+    """Encrypt the text using a Caesar cipher with the given key."""
+    result = ""
+    for char in text:
         if char.isalpha():
-            base = ord('a') if char.islower() else ord('A')
-            shift = ord(key[i % key_length].lower()) - ord('a')
-            shifted_char = chr((ord(char) - base + shift) % 26 + base)
-            encrypted += shifted_char
+            offset = 65 if char.isupper() else 97
+            result += chr((ord(char) + key - offset) % 26 + offset)
         else:
-            encrypted += char
-    return encrypted
+            result += char
+    return result
 
-def decrypt(encrypted_string, key):
-    """
-    Decrypts the encrypted string using the Vigenère cipher.
-   
-    """
-    decrypted = ""
-    key_length = len(key)
-    for i, char in enumerate(encrypted_string):
+def decrypt(text, key):
+    """Decrypt the text encrypted using a Caesar cipher with the given key."""
+    result = ""
+    for char in text:
         if char.isalpha():
-            base = ord('a') if char.islower() else ord('A')
-            shift = ord(key[i % key_length].lower()) - ord('a')
-            shifted_char = chr((ord(char) - base - shift) % 26 + base)
-            decrypted += shifted_char
+            offset = 65 if char.isupper() else 97
+            result += chr((ord(char) - key - offset) % 26 + offset)
         else:
-            decrypted += char
-    return decrypted
+            result += char
+    return result
 
-# Example usage:
-original_string = "Asaad Almugheabi"
-encryption_key = "SECRET"
-encrypted_result = encrypt(original_string, encryption_key)
-decrypted_result = decrypt(encrypted_result, encryption_key)
+# Example usage
+plaintext = "Hello,world"
+encryption_key = 3
 
-print(f"Original: {original_string}")
-print(f"Encrypted: {encrypted_result}")
-print(f"Decrypted: {decrypted_result}")
+# Encrypt the plaintext
+encrypted_text = encrypt(plaintext, encryption_key)
+print(f"Encrypted text: {encrypted_text}")
+
+# Decrypt the encrypted text
+decrypted_text = decrypt(encrypted_text, encryption_key)
+print(f"Decrypted text: {decrypted_text}")
