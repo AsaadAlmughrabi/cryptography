@@ -1,6 +1,10 @@
-# Vigenère Cipher Implementation
+# Caesar Cipher Implementation in Python
 
-This Python script demonstrates encryption and decryption using the Vigenère cipher.
+This Python script demonstrates encryption and decryption using the Caesar cipher.
+
+## Overview
+
+The Caesar cipher is a substitution cipher where each letter in the plaintext is shifted a certain number of places down or up the alphabet.
 
 ## Usage
 
@@ -10,7 +14,10 @@ This Python script demonstrates encryption and decryption using the Vigenère ci
 
 ## Example
 
-For example, encrypting "Hello, World!" with key "SECRET" results in:
-- Encrypted: "Tfdut, Ovzru!"
+For example, encrypting "Hello, World!" with key 3 results in:
+- Encrypted: "Khoor, Zruog!"
 
-Decryption of the encrypted string "Tfdut, Ovzru!" with the same key "SECRET" gives back the original string "Hello, World!".
+Decryption of the encrypted string "Khoor, Zruog!" with the same key 3 gives back the original string "Hello, World!".
+
+
+
